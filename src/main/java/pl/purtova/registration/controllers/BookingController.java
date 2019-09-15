@@ -1,8 +1,8 @@
 package pl.purtova.registration.controllers;
 
-import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.purtova.registration.models.Booking;
+import pl.purtova.registration.repositories.BookingRepository;
 
 /**
  * A REST controller for bookings
@@ -23,19 +24,22 @@ import pl.purtova.registration.models.Booking;
 @RequestMapping("/api/v1/bookings")
 public class BookingController {
 	
+	@Autowired
+	private BookingRepository bookingRepository;
+	
 	@GetMapping
 	public List<Booking> list() {
-		return Collections.<Booking>emptyList();
+		return bookingRepository.findAll();
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.OK)
 	public void create(@RequestBody Booking booking) {
-		
+		bookingRepository.save(booking);
 	}
 	
 	@GetMapping("/{id}")
 	public Booking get(@PathVariable("id") long id) {
-		return new Booking();
+		return bookingRepository.getOne(id);
 	}
 }

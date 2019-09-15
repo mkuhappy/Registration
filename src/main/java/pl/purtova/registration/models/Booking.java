@@ -3,6 +3,12 @@ package pl.purtova.registration.models;
 import java.math.BigDecimal;
 import java.sql.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Represents a single booking made by a particular client for a specific time
  * and date in order to schedule a visit for a beauty treatment.
@@ -10,17 +16,29 @@ import java.sql.Date;
  * @author olsuv
  *
  */
+@Entity
 public class Booking {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
 	private String service;
+	@Column(name = "client")
 	private String clientName;
+	@Column(name = "booking_time")
 	private String time;
+	@Column(name = "booking_date")
 	private Date date;
 	private BigDecimal price;
+	@Column(name = "phone")
 	private String contactPhone;
+	@Column(name = "email")
 	private String contactEmail;
 	
 	private boolean done;
 	private boolean cancelled;
+	@Column(name = "no_show")
 	private boolean noShow;
 	
 	public String getService() {
@@ -82,6 +100,12 @@ public class Booking {
 	}
 	public void setNoShow(boolean noShow) {
 		this.noShow = noShow;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	
