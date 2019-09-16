@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Represents a single booking made by a particular client for a specific time
  * and date in order to schedule a visit for a beauty treatment.
@@ -17,6 +20,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Booking {
 	
 	@Id
@@ -29,6 +33,7 @@ public class Booking {
 	@Column(name = "booking_time")
 	private String time;
 	@Column(name = "booking_date")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
 	private Date date;
 	private BigDecimal price;
 	@Column(name = "phone")
