@@ -1,0 +1,45 @@
+<div class="container">
+  <table class="table table-bordered table-inverse">
+    <tr>
+      <th>Treatment Name</th>
+      <th>Who</th>
+      <th>When</th>
+      <th>Price</th>
+      <th class="text-right">Purchase Price</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Completed</th>
+      <th>Cancelled</th>
+      <th>No Show</th>
+    </tr>
+    <tr *ngFor="let booking of bookings">
+      <td>
+        {{booking.service}}
+      </td>
+      <td>
+        {{booking.clientName}}
+      </td>
+      <td>
+        {{booking.date}} at {{booking.time}}
+      </td>
+      <td class="text-right">
+        {{booking.price}}
+      </td>
+      <td>
+        {{booking.contactPhone}}
+      </td>
+      <td>
+        {{booking.contactEmail}}
+      </td>
+      <td>
+        {{if (booking.done) 'Yes' else 'No' }}
+      </td>
+      <td>
+        {{if (booking.cancelled) 'Yes' else 'No' }}
+      </td>
+      <td>
+        {{if (booking.noShow) 'Yes' else 'No' }}
+      </td>
+    </tr>
+  </table>
+</div>
