@@ -16,4 +16,13 @@ export class BookingService {
   getBookings(){
   	return this.http.get('/server/api/v1/bookings');
   }
+  
+  getBooking(id: number){
+  	return this.http.get('/server/api/v1/bookings/' + id);
+  }
+  
+  createBooking(booking){
+  	let body = JSON.stringify(booking);
+  	return this.http.post('/server/api/v1/bookings', body, httpOptions);
+  }
 }

@@ -32,13 +32,13 @@
         {{booking.contactEmail}}
       </td>
       <td>
-        {{if (booking.done) 'Yes' else 'No' }}
+        {{booking.done}}
       </td>
       <td>
-        {{if (booking.cancelled) 'Yes' else 'No' }}
+        {{booking.cancelled}}
       </td>
       <td>
-        {{if (booking.noShow) 'Yes' else 'No' }}
+        {{booking.noShow}}
       </td>
     </tr>
   </table>
