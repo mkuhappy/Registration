@@ -14,7 +14,7 @@
     </tr>
     <tr *ngFor="let booking of bookings">
       <td>
-        {{booking.service}}
+      	<a [routerLink]="['/admin/view', booking.id]">{{booking.service}}</a>
       </td>
       <td>
         {{booking.clientName}}
