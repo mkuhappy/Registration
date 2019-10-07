@@ -14,11 +14,15 @@ export class BookingService {
   constructor(private http:HttpClient) { }
   
   getBookings(){
-  	return this.http.get('/server/api/v1/bookings');
+  	let token = localStorage.getItem('access_token');
+  	return this.http.get('/server/api/v1/bookings',
+  		{headers: new HttpHeaders().set('Authorization', 'Bearer ' + token)});
   }
   
   getBooking(id: number){
-  	return this.http.get('/server/api/v1/bookings/' + id);
+  	let token = localStorage.getItem('access_token');
+  	return this.http.get('/server/api/v1/bookings/' + id,
+  		{headers: new HttpHeaders().set('Authorization', 'Bearer ' + token)});
   }
   
   createBooking(booking){

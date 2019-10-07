@@ -9,13 +9,17 @@ import { BookingService } from './services/booking.service';
 import { AdminComponent } from './components/admin/admin.component';
 import { HomeComponent } from './components/home/home.component';
 import { ViewBookingComponent } from './components/view-booking/view-booking.component';
+import { CallbackComponent } from './components/callback/callback.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
     HomeComponent,
-    ViewBookingComponent
+    ViewBookingComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,7 @@ import { ViewBookingComponent } from './components/view-booking/view-booking.com
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [BookingService],
+  providers: [BookingService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

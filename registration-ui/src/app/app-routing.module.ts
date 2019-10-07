@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
 import { HomeComponent } from './components/home/home.component';
 import { ViewBookingComponent } from './components/view-booking/view-booking.component';
+import { CallbackComponent } from './components/callback/callback.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
 	{
@@ -10,10 +12,15 @@ const routes: Routes = [
 		component: HomeComponent
 	},{
 		path: 'admin/view/:id',
-		component: ViewBookingComponent
+		component: ViewBookingComponent,
+		canActivate: [AuthGuard]
 	},{
 		path: 'admin',
-		component: AdminComponent
+		component: AdminComponent,
+		canActivate: [AuthGuard]
+	},{
+		path: 'callback',
+		component: CallbackComponent
 	}
 ];
 
